@@ -1,0 +1,29 @@
+services:
+  backend:
+    build:
+      context: ../../
+      dockerfile: infrastructure/docker/backend.Dockerfile
+    environment:
+      PORT: 3000
+      LOG_LEVEL: info
+      UPLOAD_LIMIT_MB: 2
+      JOB_TTL_MINUTES: 30
+    expose:
+      - "3000"
+
+  frontend:
+    build:
+      context: ../../
+      dockerfile: infrastructure/docker/frontend.Dockerfile
+    expose:
+      - "80"
+
+  gateway:
+    image: nginx:1.27-alpine
+    depends_on:
+      - backend
+      - frontend
+    ports:
+      - "${HOST_PORT:-8080}:8080"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/nginx.conf:ro

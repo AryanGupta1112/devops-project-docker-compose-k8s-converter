@@ -1,0 +1,25 @@
+groups:
+  - name: converter-gateway-alerts
+    rules:
+      - alert: ConverterGatewayDown
+        expr: up{job="converter-gateway"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Converter gateway is down"
+          description: "Prometheus cannot scrape converter-gateway for more than 1 minute."
+
+      - alert: HighConversionErrorRate
+        expr: |
+          (
+            sum(rate(app_http_requests_total{route="/convert",status=~"5.."}[5m]))
+            /
+            clamp_min(sum(rate(app_http_requests_total{route="/convert"}[5m])), 1)
+          ) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High conversion failure rate"
+          description: "More than 10% of /api/convert requests are failing with server errors."

@@ -1,0 +1,118 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: converter-backend
+  labels:
+    app: converter-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: converter-backend
+  template:
+    metadata:
+      labels:
+        app: converter-backend
+    spec:
+      containers:
+        - name: converter-backend
+          image: converter-backend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: converter-backend-config
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: converter-frontend
+  labels:
+    app: converter-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: converter-frontend
+  template:
+    metadata:
+      labels:
+        app: converter-frontend
+    spec:
+      containers:
+        - name: converter-frontend
+          image: converter-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: converter-gateway
+  labels:
+    app: converter-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: converter-gateway
+  template:
+    metadata:
+      labels:
+        app: converter-gateway
+    spec:
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: converter-gateway-nginx
+            items:
+              - key: nginx.conf
+                path: nginx.conf
+      containers:
+        - name: converter-gateway
+          image: nginx:1.27-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
