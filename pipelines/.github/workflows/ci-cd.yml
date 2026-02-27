@@ -1,0 +1,10 @@
+name: Pipeline Placeholder
+
+on:
+  workflow_dispatch:
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Use root .github/workflows/ci-cd.yml as the active CI/CD workflow."
