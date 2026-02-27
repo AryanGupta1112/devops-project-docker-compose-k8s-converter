@@ -1,0 +1,10 @@
+app:
+  name: docker-compose-k8s-converter
+  env: local
+  port: 8080
+conversion:
+  upload_limit_mb: 2
+  job_ttl_minutes: 30
+logging:
+  level: info
+  retention_days: 30
