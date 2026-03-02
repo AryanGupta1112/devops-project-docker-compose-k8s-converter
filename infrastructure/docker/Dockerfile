@@ -25,7 +25,12 @@ ENV PORT=8080
 ENV STATIC_DIR=/app/public
 
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN apk upgrade --no-cache \
+  && npm ci --omit=dev \
+  && npm cache clean --force \
+  && rm -f package.json package-lock.json \
+  && rm -rf /usr/local/lib/node_modules/npm \
+  && rm -f /usr/local/bin/npm /usr/local/bin/npx
 
 COPY --from=backend-build /app/dist/backend ./dist/backend
 COPY --from=frontend-build /app/src/main/frontend/dist ./public

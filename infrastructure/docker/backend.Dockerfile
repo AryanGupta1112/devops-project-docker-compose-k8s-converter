@@ -15,7 +15,12 @@ ENV NODE_ENV=production
 ENV PORT=3000
 
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN apk upgrade --no-cache \
+  && npm ci --omit=dev \
+  && npm cache clean --force \
+  && rm -f package.json package-lock.json \
+  && rm -rf /usr/local/lib/node_modules/npm \
+  && rm -f /usr/local/bin/npm /usr/local/bin/npx
 
 COPY --from=build /app/dist/backend ./dist/backend
 COPY src/main/config ./src/main/config

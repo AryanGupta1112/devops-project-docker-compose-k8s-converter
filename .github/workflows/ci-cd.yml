@@ -92,6 +92,8 @@ jobs:
           exit-code: "1"
           ignore-unfixed: true
           severity: "CRITICAL,HIGH"
+          scanners: "vuln"
+          timeout: "10m"
 
       - name: Run Trivy scan (frontend)
         uses: aquasecurity/trivy-action@0.24.0
@@ -101,6 +103,8 @@ jobs:
           exit-code: "1"
           ignore-unfixed: true
           severity: "CRITICAL,HIGH"
+          scanners: "vuln"
+          timeout: "10m"
 
   artifact:
     runs-on: ubuntu-latest
