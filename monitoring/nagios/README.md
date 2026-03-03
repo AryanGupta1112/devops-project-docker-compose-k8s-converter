@@ -1,4 +1,3 @@
 # Nagios Placeholder
 
-Nagios is optional for this project.
-Prometheus monitoring is implemented in `monitoring/prometheus/`.
+Nagios configuration is intentionally left as a placeholder for this project scope.
