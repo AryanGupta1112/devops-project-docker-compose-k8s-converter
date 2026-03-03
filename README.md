@@ -25,7 +25,7 @@ Developers often use Docker Compose in local development, but deployment environ
 - Web UI with Material UI and Monaco editor.
 - API-based conversion engine with validation and warning output.
 - ZIP download for generated manifests.
-- Unit and integration tests.
+- Template-aligned test folders with placeholder test suites.
 - CI/CD pipeline with lint, test, build, and Trivy scanning.
 
 ---
@@ -43,7 +43,7 @@ Developers often use Docker Compose in local development, but deployment environ
 - Containerization: Docker
 - Orchestration: Kubernetes
 - Configuration Management: Puppet/Terraform placeholders
-- Monitoring: Prometheus (active), Nagios placeholder
+- Monitoring: Prometheus/Nagios placeholders
 
 ---
 
@@ -174,9 +174,9 @@ HOST_PORT=8080
 ## Testing
 
 ### Test Types
-- Unit Tests: `npm run test:unit`
-- Integration Tests: `npm run test:integration`
-- E2E Tests: Selenium placeholder under `tests/selenium/`
+- Unit Tests: Placeholder (`tests/unit`)
+- Integration Tests: Placeholder (`tests/integration`)
+- E2E Tests: Selenium placeholder (`tests/selenium`)
 
 ### Run All Tests
 ```bash
@@ -184,16 +184,16 @@ npm test
 ```
 
 ### Test Coverage
-Coverage is collected by Jest configuration and can be expanded during final submission.
+Current test suites are placeholders and can be replaced with executable tests if testing is brought into scope.
 
 ---
 
 ## Monitoring & Logging
 
 ### Monitoring Setup
-- Prometheus: Active (`monitoring/prometheus/prometheus.yml`)
+- Prometheus: Placeholder (`monitoring/prometheus/prometheus.yml`)
 - Nagios: Placeholder (`monitoring/nagios/README.md`)
-- Alerts: Prometheus alert rules in `monitoring/alerts/rules.yml`
+- Alerts: Placeholder (`monitoring/alerts/rules.yml`)
 
 ### Logging
 - Structured JSON logging with `pino`
