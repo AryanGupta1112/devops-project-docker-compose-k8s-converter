@@ -1,7 +1,7 @@
 # src/test
 
 This folder exists to align with the repository template.
-Executable tests are stored in the root `tests/` directory:
+Current tests under the root `tests/` directory are placeholders for this project category:
 
 - `tests/unit`
 - `tests/integration`
