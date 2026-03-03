@@ -7,7 +7,7 @@
 | Implementation | 4 | 3.5 | Core converter app is complete with frontend, backend, Docker Compose runtime, and Kubernetes manifests. |
 | Documentation | 3 | 2.8 | README, plan, design, user guide, API docs, deployment and troubleshooting docs are present and structured. |
 | Innovation | 2 | 1.6 | Good learning-focused conversion logic (warnings, best-effort mappings, ZIP export) but no advanced Helm/operator-level output. |
-| Presentation | 1 | 0.7 | Demo script and placeholder assets are ready; final polished presentation/video can improve. |
+| Presentation | 1 | 0.7 | |
 | **Total** | **10** | **8.6** | **Project is submission-ready for intermediate level with scope-aware placeholders.** |
 
 ## Project Challenges and How They Were Handled

@@ -28,6 +28,8 @@ src/main/frontend/dist/
 *.tsbuildinfo
 coverage/
 
+docs/project-a-to-z-analysis.md
+
 # Logs
 *.log
 logs/
