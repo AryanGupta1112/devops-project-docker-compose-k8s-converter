@@ -19,14 +19,14 @@ Developers often use Docker Compose in local development, but deployment environ
 - [x] Convert compose services into Kubernetes manifests with best-effort mapping.
 - [x] Provide warnings for unsupported or partially-supported compose features.
 - [x] Export generated Kubernetes manifests as a ZIP.
-- [x] Include CI/CD, tests, monitoring, and deployment documentation.
+- [x] Include tests, monitoring, and deployment documentation.
 
 ### Key Features
 - Web UI with Material UI and Monaco editor.
 - API-based conversion engine with validation and warning output.
 - ZIP download for generated manifests.
 - Template-aligned test folders with placeholder test suites.
-- CI/CD pipeline with lint, test, build, and Trivy scanning.
+- Focused implementation on Docker + Kubernetes conversion workflow.
 
 ---
 
@@ -39,7 +39,7 @@ Developers often use Docker Compose in local development, but deployment environ
 
 ### DevOps Tools
 - Version Control: Git
-- CI/CD: GitHub Actions (primary), Jenkins/GitLab placeholders
+- CI/CD: Not active in current project scope
 - Containerization: Docker
 - Orchestration: Kubernetes
 - Configuration Management: Puppet/Terraform placeholders
@@ -115,11 +115,6 @@ devops-project-docker-compose-k8s-converter/
 │   ├── kubernetes/
 │   ├── puppet/
 │   └── terraform/
-├── pipelines/
-│   ├── Jenkinsfile
-│   ├── .github/workflows/ci-cd.yml
-│   └── gitlab-ci.yml
-├── .github/workflows/ci-cd.yml
 ├── tests/
 │   ├── unit/
 │   ├── integration/
@@ -153,21 +148,6 @@ HOST_PORT=8080
 1. `src/main/config/config.yaml` - Application configuration
 2. `docker-compose.yml` - Multi-container setup
 3. `infrastructure/kubernetes/` - Kubernetes deployment files
-
----
-
-## CI/CD Pipeline
-
-### Pipeline Stages
-1. Code Quality Check - Backend and frontend lint
-2. Test - Unit and integration tests
-3. Build - Build backend and frontend Docker images
-4. Security Scan - Trivy scan for both images
-5. Deploy to Staging - Placeholder stage
-6. Deploy to Production - Placeholder stage
-
-### Pipeline Status
-![Pipeline Status](https://img.shields.io/badge/pipeline-configured-brightgreen)
 
 ---
 
@@ -296,15 +276,7 @@ main
 - [x] Input validation and YAML parse validation
 - [ ] Authentication and authorization (out of scope for this project)
 - [x] Environment-based configuration
-- [x] Dependency scan in CI/CD (Trivy)
 - [x] Upload size limits for API input
-
-### Security Scanning
-```bash
-docker compose build backend frontend
-trivy image devops_project-backend:latest
-trivy image devops_project-frontend:latest
-```
 
 ---
 
@@ -328,3 +300,4 @@ Project challenges and learnings are documented in final report and presentation
 
 ## License
 MIT (`LICENSE`)
+

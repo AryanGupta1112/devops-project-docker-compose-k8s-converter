@@ -16,7 +16,7 @@ Build a web app that accepts a `docker-compose.yml` and generates Kubernetes res
 - Best-effort conversion with warnings for unsupported features
 - Web UI with YAML editor and file upload
 - ZIP export of generated manifests
-- CI/CD pipeline, tests, and monitoring setup
+- Tests and monitoring placeholder setup
 
 ### Out of Scope
 - 100% parity with advanced Compose features
@@ -29,7 +29,7 @@ Build a web app that accepts a `docker-compose.yml` and generates Kubernetes res
 3. Frontend UI using MUI + Monaco
 4. Docker Compose runtime with separate frontend/backend/gateway services on `:8080`
 5. Kubernetes manifests for this converter app
-6. CI/CD workflow, monitoring configs, and docs
+6. Monitoring configs and docs
 
 ## 5. Risks and Mitigation
 - Risk: Compose edge cases cause invalid output  
@@ -44,4 +44,3 @@ Build a web app that accepts a `docker-compose.yml` and generates Kubernetes res
 - UI available at `http://localhost:8080`
 - API available at `http://localhost:8080/api`
 - Conversion output includes expected manifests and warnings
-- CI pipeline passes lint, tests, build, and vulnerability scan
