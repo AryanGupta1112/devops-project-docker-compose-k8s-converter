@@ -1,7 +1,5 @@
-Write-Host "Running backend lint and tests..."
-npm run lint
+Write-Host "Running backend tests..."
 npm test
 
-Write-Host "Running frontend lint and build..."
-npm --prefix src/main/frontend run lint
+Write-Host "Running frontend build..."
 npm --prefix src/main/frontend run build

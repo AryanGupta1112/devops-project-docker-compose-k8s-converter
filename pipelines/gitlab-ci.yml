@@ -1,7 +1,0 @@
-stages:
-  - placeholder
-
-placeholder-job:
-  stage: placeholder
-  script:
-    - echo "GitLab CI placeholder. Primary pipeline is GitHub Actions."
